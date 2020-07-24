@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="state-action">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="states" maxOccurs="unbounded"/>
+                <xs:element ref="operations" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="states">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="state" maxOccurs="unbounded"/>
+            </xs:choice>
+            <xs:attribute ref="statusFiledName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="operations">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="operation"/>
+            </xs:choice>
+            <xs:attribute ref="id"/>
+            <xs:attribute ref="name"/>
+        </xs:complexType>
+
+    </xs:element>
+
+
+
+    <xs:element name="state">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="operations" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute ref="id"/>
+                        <xs:attribute ref="ref"/>
+                        <xs:attribute ref="to"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="operation"/>
+            </xs:choice>
+            <xs:attribute ref="i18n"/>
+            <xs:attribute ref="name"/>
+            <xs:attribute name="isEnd" type="xs:boolean"/>
+            <xs:attribute name="isStart" type="xs:boolean"/>
+            <xs:attribute ref="id" use="required"/>
+            <xs:attribute ref="value"/>
+        </xs:complexType>
+    </xs:element>
+
+
+
+    <xs:element name="operation">
+        <xs:complexType>
+            <xs:attribute ref="id"/>
+            <xs:attribute ref="i18n" use="required"/>
+            <xs:attribute ref="name" use="required"/>
+            <xs:attribute ref="url"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="duration" type="xs:duration"></xs:element>
+    <xs:element name="date" type="xs:string"></xs:element>
+    <xs:attribute name="statusFiledName" type="xs:token"/>
+    <xs:attribute name="name" type="xs:token"/>
+    <xs:attribute name="i18n" type="xs:string"/>
+    <xs:attribute name="url" type="xs:anyURI"/>
+    <xs:attribute name="ref" type="xs:token"/>
+    <xs:attribute name="id" type="xs:token"/>
+    <xs:attribute name="to" type="xs:token"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="operation" type="xs:string"/>
+</xs:schema>

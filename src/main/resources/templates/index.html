@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>SpringBoot + Freemarker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Hello boy,</h1><br>
+<p>当前状态：${state}</p>
+<p>可执行操作：</p>
+<p>
+    <#list operationList as operation>
+    <a href="${operation.url}">${operation.name}&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
+    </#list>
+
+</p>
+
+</body>
+</html>

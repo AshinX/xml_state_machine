@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<state-action xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="state-action-1.2.xsd">
+
+    <operations id="beikaifada" name="被开发打" >
+            <operation name="beikaifada" i18n="被开发打" url="/beikaifada"/>
+    </operations>
+    <operations id="yangshangchenggong" name="养伤成功" >
+            <operation name="yangshangchenggong" i18n="养伤成功"  url="/yangshangchenggong"/>
+    </operations>
+    <operations id="yangshangshibai" name="养伤失败" >
+            <operation name="yangshangshibai" i18n="养伤失败" url="/yangshangshibai"/>
+    </operations>
+    <operations id="lingdaobumanyiduini" name="领导不满意怼你" >
+            <operation name="lingdaobumanyiduini" i18n="领导不满意怼你" url="/lingdaobumanyiduini"/>
+    </operations>
+    <operations id="yangshangchenggonggaixuqiuchenggong" name="养伤成功改需求成功" >
+            <operation name="yangshangchenggonggaixuqiuchenggong" i18n="养伤成功改需求成功" url="/yangshangchenggonggaixuqiuchenggong"/>
+    </operations>
+    <operations id="gaixuqiuchenggong" name="修改需求成功" >
+            <operation name="gaixuqiuchenggong" i18n="修改需求成功" url="/gaixuqiuchenggong"/>
+    </operations>
+    <operations id="lingdaobumanyi" name="领导不满意" >
+            <operation name="lingdaobumanyi" i18n="领导不满意" url="/lingdaobumanyi"/>
+    </operations>
+    <operations id="gaixuqiu" name="改需求" >
+            <operation name="gaixuqiu" i18n="改需求" url="/gaixuqiu"/>
+    </operations>
+    <operations id="siwang" name="死亡" >
+        <operation name="siwang" i18n="改需求" url="/siwang"/>
+    </operations>
+
+    <!-- 状态机主要流程 -->
+    <states statusFiledName="status">
+        <state id="startstate" name="startstate" i18n="开始">
+           <operations ref="gaixuqiu" to="gaixuqiustate"/>
+        </state>
+        <state id="gaixuqiustate" name="gaixuqiustate" i18n="改需求">
+            <operations ref="beikaifada" id="beikaifada" to="yangshangstate"/>
+            <operations ref="gaixuqiuchenggong" id="gaixuqiuchenggong" to="zuohuibaostate"/>
+        </state>
+        <state id="yangshangstate" name="yangshangstate" i18n="养伤">
+            <operations ref="yangshangshibai" id="yangshangshibai" to="siwangstate"/>
+            <operations ref="yangshangchenggong" id="yangshangchenggong" to="gaixuqiustate"/>
+            <operations ref="yangshangchenggonggaixuqiuchenggong" id="yangshangchenggonggaixuqiuchenggong" to="zuohuibaostate"/>
+        </state>
+        <state id="zuohuibaostate" name="zuohuibaostate" i18n="做汇报">
+            <operations ref="lingdaobumanyi" id="lingdaobumanyi" to="gaixuqiustate"/>
+            <operations ref="lingdaobumanyiduini" id="lingdaobumanyiduini" to="yangshangstate"/>
+        </state>
+        <state id="siwangstate" name="siwangstate" i18n="死亡">
+            <operations ref="siwang" id="siwang" to="siwangstate"/>
+        </state>
+    </states>
+
+</state-action>
