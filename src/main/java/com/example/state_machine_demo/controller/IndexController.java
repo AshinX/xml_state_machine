@@ -1,4 +1,4 @@
-package com.example.state_machine_demo.Controller;
+package com.example.state_machine_demo.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.example.state_machine_demo.dto.ActionState;
 import com.example.state_machine_demo.dto.OperationDto;
 import com.example.state_machine_demo.util.Index;
 import org.springframework.beans.factory.annotation.Autowired;

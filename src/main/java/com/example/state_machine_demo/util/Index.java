@@ -23,7 +23,7 @@ public class Index {
     public  Map<String,List<OperationDto>> init(){
         Map<String,List<OperationDto>> dataSource=new HashMap<>();
         try {
-            File file = new File("/Users/fengyue/IdeaProjects/state_machine_demo/src/main/resources/lassen_suit.state-action.xml");
+            File file = new File("/Users/fengyue/IdeaProjects/state_machine_demo/src/main/resources/state-action.xml");
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder =  factory.newDocumentBuilder();
